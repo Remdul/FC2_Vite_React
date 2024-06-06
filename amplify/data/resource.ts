@@ -13,7 +13,7 @@ const schema = a.schema({
       isDone: false,
     //}).authorization((allow) => [allow.publicApiKey()]),
     }).authorization(allow => [allow.owner()]),
-
+/****
   Member: a.model({
     name: a.string().required(),
     // 1. Create a reference field
@@ -45,7 +45,7 @@ const schema = a.schema({
     family: a.belongsTo('Family', 'familyId'),
   })
   .authorization(allow => [allow.publicApiKey()]),
-  
+  ****/
 });
 
 

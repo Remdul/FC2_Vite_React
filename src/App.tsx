@@ -15,7 +15,21 @@ function App() {
     });
   }, []);
 
-  
+
+  const checkColor = (description) => {
+  switch (description) {
+    case "Open":
+      return "white";
+    case "Complete":
+      return "green";
+    case "In Progress":
+      return "yellow";
+    case "Overdue":
+      return "red";
+    default:
+  }};
+
+
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
   }
@@ -35,8 +49,10 @@ function App() {
 
       <ul>
         {todos.map((todo) => (
+
           <li 
           onClick={() => deleteTodo(todo.id)}
+          style={{ color: `${checkColor("In Progress")}` }}>
           key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
