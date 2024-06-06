@@ -10,10 +10,11 @@ const schema = a.schema({
   Todo: a.model({
       content: a.string(),
       value: a.integer(),
+      status: a.string(),
     //  isDone: false,
     //}).authorization((allow) => [allow.publicApiKey()]),
     }).authorization(allow => [allow.owner()]),
-/****
+
   Member: a.model({
     name: a.string().required(),
     // 1. Create a reference field
@@ -30,7 +31,7 @@ const schema = a.schema({
     members: a.hasMany('Member', 'familyId'),
   })
   .authorization(allow => [allow.publicApiKey()]),
-  
+/****  
   Rule: a.model({
     ruleDesc: a.string().required(),
     familyId: a.id(),
