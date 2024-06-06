@@ -32,13 +32,28 @@ function App() {
     default:
   }};
 
+  const changeStatus = (status: string) => {
+    switch (status){
+      case "":
+        return "Open";
+      case "Open":
+        return "In Progress";
+      case "In Progress":
+        return "Complete";
+      case "Complete":
+        return "Overdue";
+      case "Overdue":
+        return "Open";
+      default:
+    }
+  }};
 
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
   }
   
   function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+    client.models.Todo.create({ content: window.prompt("Todo content")});
   }
   
   return (
@@ -67,7 +82,7 @@ function App() {
         {todos.map((todo) => (
 
           <li 
-          onClick={() => deleteTodo(todo.id)}
+          onClick={() => todo.status = changeStatus(todo.status)}
           
           style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
           key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
