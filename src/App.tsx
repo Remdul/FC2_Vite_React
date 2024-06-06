@@ -30,6 +30,7 @@ function App() {
     case "Overdue":
       return "red";
     default:
+      return "white"; 
   }};
 
   const changeStatus = (status: string) => {
@@ -45,6 +46,7 @@ function App() {
       case "Overdue":
         return "Open";
       default:
+      return "Open"; 
     }};
 
   function deleteTodo(id: string) {
@@ -81,7 +83,7 @@ function App() {
         {todos.map((todo) => (
 
           <li 
-            onClick={() => todo.status = changeStatus(todo.status)}
+            onClick={() => todo.status = changeStatus(todo.status ?? "")}
             style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
             key={todo.id}>
             {todo.content} <b>[{todo.value}]</b>
