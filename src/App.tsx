@@ -52,7 +52,7 @@ function App() {
 
           <li 
           onClick={() => deleteTodo(todo.id)}
-          style={{ color: `${checkColor("In Progress")}` }}
+          style={{ background-color: `${checkColor("In Progress")}` }}
           key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
