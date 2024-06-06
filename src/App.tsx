@@ -68,7 +68,7 @@ function App() {
 
           <li 
           onClick={() => deleteTodo(todo.id)}
-          style={{ backgroundColor: `${checkColor({todo.status})}` }}
+          style={{ backgroundColor: `${checkColor(""}` }}
           key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
