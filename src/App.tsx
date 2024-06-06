@@ -16,7 +16,7 @@ function App() {
   }, []);
 
 
-  const checkColor = (description) => {
+  const checkColor = (description: string) => {
   switch (description) {
     case "Open":
       return "white";
