@@ -24,10 +24,6 @@ function App() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
   
-  function updateTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
-
   return (
         
     <Authenticator>
