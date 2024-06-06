@@ -81,10 +81,13 @@ function App() {
         {todos.map((todo) => (
 
           <li 
-          onClick={() => todo.status = changeStatus(todo.status)}
+            onClick={() => todo.status = changeStatus(todo.status)}
+            style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
+            key={todo.id}>
+            {todo.content} <b>[{todo.value}]</b>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button> 
+          </li>
           
-          style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
-          key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
       
