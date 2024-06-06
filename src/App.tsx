@@ -23,6 +23,10 @@ function App() {
   function createTodo() {
     client.models.Todo.create({ content: window.prompt("Todo content") });
   }
+  
+  function updateTodo() {
+    client.models.Todo.create({ content: window.prompt("Todo content") });
+  }
 
   return (
         
@@ -37,7 +41,7 @@ function App() {
         {todos.map((todo) => (
           <li 
           onClick={() => deleteTodo(todo.id)}
-          key={todo.id}>{todo.content} {todo.value}</li>
+          key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
       

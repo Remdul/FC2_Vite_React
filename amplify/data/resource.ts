@@ -7,13 +7,47 @@ specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
+  Todo: a.model({
       content: a.string(),
       value: a.integer(),
+      isDone: false,
     //}).authorization((allow) => [allow.publicApiKey()]),
     }).authorization(allow => [allow.owner()]),
+
+  Member: a.model({
+    name: a.string().required(),
+    // 1. Create a reference field
+    familyId: a.id(),
+    // 2. Create a belongsTo relationship with the reference field
+    family: a.belongsTo('Family', 'familyId'),
+  })
+  .authorization(allow => [allow.publicApiKey()]),
+
+  Family: a.model({
+    sirName: a.string().required(),
+    // 3. Create a hasMany relationship with the reference field
+    //    from the `Member`s model.
+    members: a.hasMany('Member', 'familyId'),
+  })
+  .authorization(allow => [allow.publicApiKey()]),
+  
+  Rule: a.model({
+    ruleDesc: a.string().required(),
+    familyId: a.id(),
+    family: a.belongsTo('Family', 'familyId'),
+  })
+  .authorization(allow => [allow.publicApiKey()]),
+  
+  Reward: a.model({
+    rewardDesc: a.string().required(),
+    value: a.integer().required(),
+    familyId: a.id(),
+    family: a.belongsTo('Family', 'familyId'),
+  })
+  .authorization(allow => [allow.publicApiKey()]),
+  
 });
+
 
 export type Schema = ClientSchema<typeof schema>;
 
