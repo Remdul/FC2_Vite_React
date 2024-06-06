@@ -42,9 +42,9 @@ function App() {
       </ul>
       
       <div>
-        I like to pretend I know what I'm doing.... So here's a simple todo list.... lol..
+        🥳 Try creating a new todo. Bryan thinks it works.
         <br />
-        </a>
+        
       </div>
                 <button onClick={signOut}>Sign out</button>
     </main>
