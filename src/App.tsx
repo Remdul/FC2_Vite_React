@@ -45,8 +45,7 @@ function App() {
       case "Overdue":
         return "Open";
       default:
-    }
-  }};
+    }};
 
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id })
