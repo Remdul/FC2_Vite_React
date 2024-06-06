@@ -3,6 +3,9 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
+import About from './pages/About';
+import Home from './pages/Home';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const client = generateClient<Schema>();
 
@@ -44,7 +47,21 @@ function App() {
       {({ signOut, user }) => (
       
     <main>
-      <h2>{user?.signInDetails?.loginId}'s todos</h2>
+         <Router>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+
+
+     <h2>{user?.signInDetails?.loginId}'s todos</h2>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
