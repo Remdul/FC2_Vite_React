@@ -23,7 +23,7 @@ function App() {
     case "Complete":
       return "green";
     case "In Progress":
-      return "yellow";
+      return "green";
     case "Overdue":
       return "red";
     default:
@@ -52,7 +52,7 @@ function App() {
 
           <li 
           onClick={() => deleteTodo(todo.id)}
-          style={{ background-color: `${checkColor("In Progress")}` }}
+          style={{ color: `${checkColor("In Progress")}` }}
           key={todo.id}>{todo.content} <b>[{todo.value}]</b></li>
         ))}
       </ul>
