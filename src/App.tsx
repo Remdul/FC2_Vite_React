@@ -9,13 +9,13 @@ function App() {
   return (
     <Authenticator>
       {({ signOut }) => (
-        <main>
+        <div className="main-container"> {/* Add this div */}
           <Router>
             <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/todos">Tasks</Link></li> {/* Add the link to the TodoList page */}
+                <li><Link to="/todos">Todos</Link></li> {/* Add the link to the TodoList page */}
               </ul>
             </nav>
             <Routes>
@@ -27,7 +27,7 @@ function App() {
           <div>
             <button onClick={signOut}>Sign out</button>
           </div>
-        </main>
+        </div> {/* Close the div */}
       )}
     </Authenticator>
   );
