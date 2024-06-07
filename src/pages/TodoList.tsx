@@ -79,43 +79,28 @@ const TodoList = () => {
           />
           <button type="submit">Add Todo</button>
         </form>
-
-            
-            <ul>
-              {todos.map((todo) => (
-                <li
-                  style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
-                  key={todo.id}
-                >
-                  <div>
-                    {todo.content}
-                    <br />
-                    Merits: {todo.value}
-                  </div>
-                  <div>
-                    <button onClick={() => handleStatusChange(todo.id, 'In Progress')}>In Progress</button>
-                    <button onClick={() => handleStatusChange(todo.id, 'Complete')}>Complete</button>
-                    <button onClick={() => handleStatusChange(todo.id, 'Overdue')}>Overdue</button>
-                    <button
-                      className="delete-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteTodo(todo.id);
-                      }}
-                    >
-                      X
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-
-
-
-    </div>
+          <ul className="todo-list">
+            {todos.map((todo) => (
+              <li
+                key={todo.id}
+                style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
+              >
+                {todo.content}
+                <br />
+                Merits: {todo.value}
+                <button onClick={() => handleStatusChange(todo.id, 'In Progress')}>S</button>
+                <button onClick={() => handleStatusChange(todo.id, 'Complete')}>C</button>
+                <button onClick={() => handleStatusChange(todo.id, 'Overdue')}>O</button>
+                <button onClick={() => handleTodoClick(todo.id)}>X</button>
+              </li>
+            ))}
+          </ul>
+        </div>
     </div>
   );
 };
 
 export default TodoList
+
+
+

@@ -92,3 +92,22 @@ a {
 .home-content {
   /* Add styling for the main content */
 }
+
+
+.todo-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns with equal width */
+  gap: 10px; /* Spacing between items */
+  list-style: none; /* Remove default list styles */
+}
+
+.todo-list li {
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow effect */
+}
+
+.todo-list li button {
+  margin-top: 8px; /* Add spacing between todo item and delete button */
+}
