@@ -57,6 +57,15 @@ function App() {
     client.models.Todo.create({ content: window.prompt("Todo content")});
   }
   
+  function handleTodoClick(id: string) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, status: changeStatus(todo.status) } : todo
+      )
+    );
+  }
+
+  
   return (
         
     <Authenticator>
@@ -83,7 +92,7 @@ function App() {
         {todos.map((todo) => (
 
           <li 
-            onClick={() => todo.status = changeStatus(todo.status ?? "Open")}
+            onClick={() => handleTodoClick(todo.id)}
             style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
             key={todo.id}>
             {todo.content} <b>[{todo.value}]</b>
