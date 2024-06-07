@@ -86,7 +86,7 @@ const TodoList = () => {
                 deleteTodo(todo.id);
               }}
             >
-              Delete
+              X
             </button>
           </li>
         ))}
@@ -95,4 +95,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default TodoList

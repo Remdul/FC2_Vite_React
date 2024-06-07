@@ -16,6 +16,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better readability */
+  border-radius: 8px; /* Rounded corners */
 }
 
 button {
