@@ -10,7 +10,7 @@ body {
 }
 
 .main-container {
-  width: 80%; /* Set a consistent width */
+  width: 500px; /* Set a consistent width */
   max-width: 800px; /* Optional: set a max width */
   margin: 0 auto; /* Center the container */
   display: flex;
