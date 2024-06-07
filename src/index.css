@@ -13,6 +13,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: 16px; /* Added padding */
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better readability */
+  border-radius: 8px; /* Rounded corners */
 }
 
 button {
@@ -24,11 +27,13 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s; /* Added background-color transition */
   color: white;
+  margin-bottom: 8px; /* Added margin between buttons */
 }
 button:hover {
   border-color: #646cff;
+  background-color: #333333; /* Darker background on hover */
 }
 button:focus,
 button:focus-visible {
@@ -50,16 +55,27 @@ ul {
   overflow: auto;
 }
 
+a {
+  font-weight: 800;
+  text-decoration: none;
+  color: inherit; /* Maintain current text color */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for better indication */
+}
+
 li {
   background-color: white;
   padding: 8px;
+  display: flex;
+  align-items: center; /* Center content vertically */
 }
 
 li:hover {
   background: #dadbf9;
 }
 
-a {
-  font-weight: 800;
-  text-decoration: none;
+button.delete-btn {
+  margin-left: auto;
 }

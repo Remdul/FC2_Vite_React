@@ -96,9 +96,17 @@ function App() {
             style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
             key={todo.id}>
             {todo.content} <b>[{todo.value}]</b>
-            <button onClick={() => deleteTodo(todo.id)}>X</button> 
+
+                <button
+                  className="delete-btn"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent the parent click event
+                    deleteTodo(todo.id);
+                  }}
+                >
+                  X
+                </button>
           </li>
-          
         ))}
       </ul>
       
