@@ -29,21 +29,6 @@ const TodoList = () => {
     }
   };
 
-  const changeStatus = (status: string) => {
-    switch (status) {
-      case "Open":
-        return "In Progress";
-      case "In Progress":
-        return "Complete";
-      case "Complete":
-        return "Overdue";
-      case "Overdue":
-        return "Open";
-      default:
-        return "Open"; // Default status
-    }
-  };
-
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id });
   }
@@ -58,15 +43,20 @@ const TodoList = () => {
     setValue(1); // Reset value after todo creation
   };
 
-  function handleTodoClick(id: string) {
-    setTodos((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === id
-          ? { ...todo, status: changeStatus(todo.status ?? "Open") }
-          : todo
-      )
-    );
-  }
+    const handleStatusChange = async (id: string, newStatus: string) => {
+      try {
+        await client.models.Todo.update({ id, status: newStatus });
+        // If the update is successful, update the todo status locally
+        setTodos((prevTodos) =>
+          prevTodos.map((todo) =>
+            todo.id === id ? { ...todo, status: newStatus } : todo
+          )
+        );
+      } catch (error) {
+        console.error('Error updating todo status:', error);
+      }
+    };
+
 
   return (
       
@@ -90,28 +80,39 @@ const TodoList = () => {
           <button type="submit">Add Todo</button>
         </form>
 
-      <ul>
-        {todos.map((todo) => (
-          <li
-            onClick={() => handleTodoClick(todo.id)}
-            style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
-            key={todo.id}
-          >
-            {todo.content}
-            <br />
-            [{todo.value}]
-            <button
-              className="delete-btn"
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent the parent click event
-                deleteTodo(todo.id);
-              }}
-            >
-              X
-            </button>
-          </li>
-        ))}
-      </ul>
+            
+            <ul>
+              {todos.map((todo) => (
+                <li
+                  style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
+                  key={todo.id}
+                >
+                  <div>
+                    {todo.content}
+                    <br />
+                    Merits: {todo.value}
+                  </div>
+                  <div>
+                    <button onClick={() => handleStatusChange(todo.id, 'In Progress')}>In Progress</button>
+                    <button onClick={() => handleStatusChange(todo.id, 'Complete')}>Complete</button>
+                    <button onClick={() => handleStatusChange(todo.id, 'Overdue')}>Overdue</button>
+                    <button
+                      className="delete-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteTodo(todo.id);
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+
+
+
     </div>
     </div>
   );
