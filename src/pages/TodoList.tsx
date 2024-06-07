@@ -5,6 +5,7 @@ const client = generateClient<Schema>();
 
 const TodoList = () => {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [value, setValue] = useState<number>(1); // Initialize value state with 1
 
   useEffect(() => {
     const subscription = client.models.Todo.observeQuery().subscribe({
@@ -52,16 +53,10 @@ const TodoList = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!content.trim()) return;
-    await client.models.Todo.create({ content, status: "Open", value: 1 });
+    await client.models.Todo.create({ content, status: "Open", value }); // Include value in todo creation
     setContent('');
+    setValue(1); // Reset value after todo creation
   };
-  
-  function createTodo() {
-    const content = window.prompt("Todo content");
-    if (content) {
-      client.models.Todo.create({ content, status: "Open", value: 1 });
-    }
-  }
 
   function handleTodoClick(id: string) {
     setTodos((prevTodos) =>
@@ -79,21 +74,22 @@ const TodoList = () => {
       <h2 className="home-title">Tasks</h2>
       <div className="home-content">
 
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Enter new todo..."
+          />
+          <input
+            type="number"
+            value={value}
+            onChange={(e) => setValue(parseInt(e.target.value))}
+            placeholder="Enter value..."
+          />
+          <button type="submit">Add Todo</button>
+        </form>
 
-      <button onClick={createTodo}>+ new</button>
-      
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Enter new todo..."
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-      
-      
-      
       <ul>
         {todos.map((todo) => (
           <li
