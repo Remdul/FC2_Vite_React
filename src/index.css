@@ -111,3 +111,22 @@ a {
 .todo-list li button {
   margin-top: 8px; /* Add spacing between todo item and delete button */
 }
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better readability */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow effect */
+}
+
+.profile-container h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.profile-container div {
+  margin-bottom: 10px;
+}
