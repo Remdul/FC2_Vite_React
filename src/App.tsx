@@ -15,7 +15,7 @@ function App() {
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/todos">Todos</Link></li> {/* Add the link to the TodoList page */}
+                <li><Link to="/todos">Tasks</Link></li> {/* Add the link to the TodoList page */}
               </ul>
             </nav>
             <Routes>
