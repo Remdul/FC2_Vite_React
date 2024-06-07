@@ -27,7 +27,7 @@ function App() {
           <div>
             <button onClick={signOut}>Sign out</button>
           </div>
-        </div> {/* Close the div */}
+        </div>
       )}
     </Authenticator>
   );
