@@ -1,3 +1,5 @@
+/* Global styles */
+
 body {
   margin: 0;
   background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
@@ -10,15 +12,16 @@ body {
 }
 
 .main-container {
-  width: 500px; /* Set a consistent width */
-  max-width: 800px; /* Optional: set a max width */
-  margin: 0 auto; /* Center the container */
+  width: 90%; /* Set a percentage width for responsiveness */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better readability */
-  border-radius: 8px; /* Rounded corners */
-  box-sizing: content-box;
+  border-radius: 8px;
+  box-sizing: border-box; /* Use border-box for consistent sizing */
 }
 
 button {
@@ -33,9 +36,11 @@ button {
   transition: border-color 0.25s;
   color: white;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -76,13 +81,7 @@ a {
   text-decoration: none;
 }
 
-.home-container {
-  /* Set a consistent width and center the container */
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
+/* Home component styles */
 
 .home-title {
   font-size: 24px;
