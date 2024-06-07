@@ -1,14 +1,9 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import About from './pages/About';
 import Home from './pages/Home';
 import TodoList from './pages/TodoList'; // Import the new TodoList component
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
-const client = generateClient<Schema>();
 
 function App() {
   return (
