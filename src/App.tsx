@@ -26,7 +26,7 @@ function App() {
     case "Complete":
       return "green";
     case "In Progress":
-      return "green";
+      return "yellow";
     case "Overdue":
       return "red";
     default:
@@ -95,7 +95,8 @@ function App() {
             onClick={() => handleTodoClick(todo.id)}
             style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
             key={todo.id}>
-            {todo.content} <b>[{todo.value}]</b>
+            {todo.content} 
+            <b>\n{todo.value} Merits</b>
 
                 <button
                   className="delete-btn"
