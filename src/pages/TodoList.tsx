@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Schema } from "../../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
-
 const client = generateClient<Schema>();
 
 const TodoList = () => {
@@ -47,7 +46,16 @@ const TodoList = () => {
   function deleteTodo(id: string) {
     client.models.Todo.delete({ id });
   }
+  
+  const [content, setContent] = useState('');
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!content.trim()) return;
+    await client.models.Todo.create({ content, status: "Open", value: 1 });
+    setContent('');
+  };
+  
   function createTodo() {
     const content = window.prompt("Todo content");
     if (content) {
@@ -73,6 +81,19 @@ const TodoList = () => {
 
 
       <button onClick={createTodo}>+ new</button>
+      
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Enter new todo..."
+        />
+        <button type="submit">Add Todo</button>
+      </form>
+      
+      
+      
       <ul>
         {todos.map((todo) => (
           <li
