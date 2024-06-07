@@ -91,7 +91,7 @@ const TodoList = () => {
                 <button onClick={() => handleStatusChange(todo.id, 'In Progress')}>S</button>
                 <button onClick={() => handleStatusChange(todo.id, 'Complete')}>C</button>
                 <button onClick={() => handleStatusChange(todo.id, 'Overdue')}>O</button>
-                <button onClick={() => handleTodoClick(todo.id)}>X</button>
+                <button onClick={() => deleteTodo(todo.id)}>X</button>
               </li>
             ))}
           </ul>
