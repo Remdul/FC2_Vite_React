@@ -83,7 +83,7 @@ function App() {
         {todos.map((todo) => (
 
           <li 
-            onClick={() => todo.status = changeStatus(todo.status)}
+            onClick={() => todo.status = changeStatus(todo.status ?? "Open")}
             style={{ backgroundColor: checkColor(todo.status ?? "Open") }}
             key={todo.id}>
             {todo.content} <b>[{todo.value}]</b>
