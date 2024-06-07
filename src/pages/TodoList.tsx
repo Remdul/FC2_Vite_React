@@ -66,8 +66,12 @@ const TodoList = () => {
   }
 
   return (
-    <div>
-      <h2>Tasks</h2>
+      
+      <div className="home-container">
+      <h2 className="home-title">Tasks</h2>
+      <div className="home-content">
+
+
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
@@ -91,6 +95,7 @@ const TodoList = () => {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
