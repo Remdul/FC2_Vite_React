@@ -75,3 +75,21 @@ a {
   font-weight: 800;
   text-decoration: none;
 }
+
+.home-container {
+  /* Set a consistent width and center the container */
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.home-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.home-content {
+  /* Add styling for the main content */
+}
