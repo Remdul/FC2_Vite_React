@@ -1,4 +1,6 @@
 import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
+import { defineAuth } from "@aws-amplify/backend"
+
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -7,6 +9,13 @@ specifies that any user authenticated via an API key can "create", "read",
 "update", and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
+
+  UserProfile: a
+    .model({
+      email: a.string(),
+      profileOwner: a.string(),
+    }).authorization((allow) => [allow.ownerDefinedIn("profileOwner")]),
+
   Todo: a.model({
       content: a.string(),
       value: a.integer(),
@@ -63,6 +72,14 @@ export const data = defineData({
     },
   },
 });
+
+export const auth = defineAuth({
+  loginWith: {
+    email: true,
+  },
+})
+
+
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a
